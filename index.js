@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 
 
 // Get notes
-app.use("/", require('./routes/UsersRoutes'))
+app.use("/", require('./models/notes-data'))
 
 
 module.exports = app;
