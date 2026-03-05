@@ -11,4 +11,14 @@ router.post('/notes', async (req, res) => {
     }
 });
 
+router.get('/notes', async (req, res) => {
+    try {
+        const notes = await Note.find();
+        res.json(notes);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
 module.exports = router;

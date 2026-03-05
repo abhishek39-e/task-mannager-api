@@ -14,6 +14,8 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.get('/', (req, res) => {
     res.send('Server + DB connected 🚀')
+
+
 })
 
 app.use("/api", require('../server/notesData'))
