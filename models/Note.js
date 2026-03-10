@@ -9,7 +9,16 @@ const noteSchema = new mongoose.Schema(
         content: {
             type: String,
             required: true
-        }
+        },
+        important: {
+            type: Boolean,
+            default: false
+        },
+        iscomplete: {
+            type: Boolean,
+            default: false
+        },
+
     },
     { timestamps: true }
 )
