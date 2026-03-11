@@ -1,21 +1,21 @@
 const express = require("express");
 const Note = require("../models/Note");
-const { route } = require("../api");
+
 const router = express.Router();
 
-route.put("/notes/:id", async (req, res) => {
+router.put("/notes/:id", async (req, res) => {
     try {
-        const updateNotes = await Notes.findByIdAndUpdate(
+        const updateNotes = await Note.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true }
-        )
-        res.json(updateNotes)
-    }
-    catch (err) {
+        );
+        res.json(updateNotes);
+    } catch (err) {
         res.status(500).json({ error: err.message });
     }
-})
+});
+
 router.delete('/notes/:id', async (req, res) => {
     try {
         await Note.findByIdAndDelete(req.params.id);
@@ -24,6 +24,7 @@ router.delete('/notes/:id', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
 router.post('/notes', async (req, res) => {
     try {
         const note = await Note.create(req.body);
@@ -41,6 +42,5 @@ router.get('/snotes', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
-
 
 module.exports = router;
